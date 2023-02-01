@@ -1,10 +1,10 @@
 import { MarkdownRenderer } from "@/features/markdown/MarkdownRenderer";
 
-const text = `## How to create wavy shapes with SVG And Some more Text
+const text = `
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque egestas. 
 
-### What is SVG?
+## What is SVG?
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in eu mi bibendum neque egestas congue quisque egestas.
 
@@ -18,7 +18,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 `;
 export default function Article() {
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto px-5 max-w-[700px] sm:px-9">
       <MarkdownRenderer markdownText={text}></MarkdownRenderer>
     </div>
   );
