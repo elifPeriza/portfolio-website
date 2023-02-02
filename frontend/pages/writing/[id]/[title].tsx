@@ -1,4 +1,5 @@
 import ArticleHeader from "@/components/ArticleHeader";
+import Button from "@/components/Button";
 import { MarkdownRenderer } from "@/features/markdown/MarkdownRenderer";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import Link from "next/link";
@@ -10,11 +11,7 @@ export default function Article({ article }: any) {
     <div className="w-full bg-violet-bg">
       <div className="mx-auto px-5 max-w-[700px] pb-24 sm:px-9">
         <div className="flex flex-row justify-end pt-8">
-          <Link href="/">
-            <button className="font-noto font-bold bg-white text-[0.925rem] text-violet-primary border-2 border-violet-primary rounded-md px-3 py-1 ">
-              Go Back
-            </button>
-          </Link>
+          <Button href="/">Go Back</Button>
         </div>
 
         <ArticleHeader
