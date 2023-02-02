@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { GetArticles } from "./articles.handler";
+import { GetArticleById, GetArticles } from "./articles.handler";
 
 const ArticlesRouter = Router({ mergeParams: true });
 
 ArticlesRouter.get("/", GetArticles);
-// ArticlesRouter.get("/:id", GetArticleByID);
+ArticlesRouter.get("/:id", GetArticleById);
 
 export default ArticlesRouter;

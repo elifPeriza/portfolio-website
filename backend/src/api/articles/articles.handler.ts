@@ -21,3 +21,20 @@ export const GetArticles: RequestHandler = (req, res) => {
       res.status(500).send("Internal Server Error");
     });
 };
+
+export const GetArticleById: RequestHandler = (req, res) => {
+  const { id } = req.params;
+  database
+    .query("Select * FROM articles WHERE id = ?", [id])
+    .then(([result]: any) => {
+      const article = {
+        ...result[0],
+        release_date: dateToString(new Date(result[0].release_date)),
+      };
+      res.status(200).json(article);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    });
+};
