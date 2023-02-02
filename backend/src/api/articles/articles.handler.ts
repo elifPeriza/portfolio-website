@@ -5,7 +5,7 @@ import { dateToString } from "../../utils/date";
 export const GetArticles: RequestHandler = (req, res) => {
   database
     .query(
-      "SELECT articles.title, articles.teaser, articles.release_date, tags.name FROM articles JOIN tags ON articles.tag_id = tags.id"
+      "SELECT articles.id, articles.title, articles.teaser, articles.release_date, tags.name as tag FROM articles JOIN tags ON articles.tag_id = tags.id"
     )
     .then(([result]) => {
       const articles = (result as any).map((article: any) => {

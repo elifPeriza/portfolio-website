@@ -2,7 +2,9 @@ import ArticleCard from "@/components/ArticleCard";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
-export default function Web() {
+const backendURL = "http://localhost:5005";
+export default function Web({ articles }: any) {
+  //   const { release_date, title, tag, teaser } = articles[0];
   return (
     <>
       <div className=" mx-auto px-[5%] max-w-[1030px]">
@@ -15,11 +17,32 @@ export default function Web() {
             Writing
           </h2>
           <div className="grid grid-cols-1 gap-5 pt-5 pb-8 sm:grid-cols-2 sm:gap-8 sm:pt-7 sm:pb-10">
-            <ArticleCard />
-            <ArticleCard />
+            {articles.map((article: any) => {
+              return (
+                <ArticleCard
+                  key={article.title}
+                  id={article.id}
+                  release_date={article.release_date}
+                  tag={article.tag}
+                  teaser={article.teaser}
+                  title={article.title}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch(`${backendURL}/api/articles`);
+  const data = await response.json();
+  return {
+    props: {
+      articles: data,
+    },
+    revalidate: 60 * 60,
+  };
 }
