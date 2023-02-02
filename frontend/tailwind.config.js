@@ -10,7 +10,8 @@ module.exports = {
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
       lato: ["Lato", "sans-serif"],
-      noto: ["Noto", "sans-serif"],
+      noto: ["Noto Sans", "sans-serif"],
+      robotoMono: ["Roboto Mono", "sans-serif"],
     },
     extend: {
       colors: {
