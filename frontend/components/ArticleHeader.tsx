@@ -1,6 +1,6 @@
 export default function ArticleHeader() {
   return (
-    <div>
+    <div className="pt-20 sm:pt-32">
       <h3 className="font-robotoMono text-violet-secondary text-sm mb-4 ">
         14-02-2023
       </h3>
