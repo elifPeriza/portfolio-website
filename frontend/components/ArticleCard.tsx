@@ -2,7 +2,7 @@ import Tag from "./Tag";
 
 export default function ArticleCard() {
   return (
-    <div className="border-2 border-violet-primary rounded-xl px-6 py-6 ">
+    <div className="bg-white border-2 border-violet-primary rounded-xl px-6 py-6  ">
       <h3 className="font-robotoMono text-violet-secondary text-sm mb-2 ">
         14-02-2023
       </h3>
