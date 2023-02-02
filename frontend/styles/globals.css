@@ -27,3 +27,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.squircle {
+  clip-path: url(#squircle);
+}
