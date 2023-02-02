@@ -13,7 +13,7 @@ export default function Header() {
           </clipPath>
         </defs>
       </svg>
-      <div className="flex flex-row gap-4 items-center py-7 px-10  mt-8 headerBreakpoint:px-0">
+      <div className="flex flex-row gap-4 items-center py-7  mt-8 headerBreakpoint:px-0">
         <div className="flex flex-col ">
           <div className="flex flex-row gap-4 mb-5 items-center ">
             <h1 className="font-poppins font-bold text-black text-2xl  mb-3 sm:text-3xl">
