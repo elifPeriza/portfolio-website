@@ -1,6 +1,6 @@
 export const ArticleParagraph = ({ children }: any) => {
   return (
-    <p className=" font-noto font-normal text-base text-black mb-4 sm:text-lg sm:mb- ">
+    <p className=" font-noto font-normal text-base text-black mb-4 sm:text-lg sm:mb-6 ">
       {children}
     </p>
   );
