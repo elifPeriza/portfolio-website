@@ -1,3 +1,4 @@
+import ArticleHeader from "@/components/ArticleHeader";
 import { MarkdownRenderer } from "@/features/markdown/MarkdownRenderer";
 
 const text = `
@@ -18,7 +19,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 `;
 export default function Article() {
   return (
-    <div className="mx-auto px-5 max-w-[700px] sm:px-9">
+    <div className="mx-auto px-5 max-w-[700px] pt-24 sm:px-9 sm:pt-32">
+      <ArticleHeader />
       <MarkdownRenderer markdownText={text}></MarkdownRenderer>
     </div>
   );
