@@ -20,17 +20,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 `;
 export default function Article() {
   return (
-    <div className="mx-auto px-5 max-w-[700px] sm:px-9">
-      <div className="flex flex-row justify-end pt-8">
-        <Link href="/">
-          <button className="font-noto font-bold text-[0.925rem] text-violet-primary border-2 border-violet-primary rounded-md px-3 py-1 ">
-            Go Back
-          </button>
-        </Link>
-      </div>
+    <div className="w-full bg-violet-bg">
+      <div className="mx-auto px-5 max-w-[700px] pb-24 sm:px-9">
+        <div className="flex flex-row justify-end pt-8">
+          <Link href="/">
+            <button className="font-noto font-bold bg-white text-[0.925rem] text-violet-primary border-2 border-violet-primary rounded-md px-3 py-1 ">
+              Go Back
+            </button>
+          </Link>
+        </div>
 
-      <ArticleHeader />
-      <MarkdownRenderer markdownText={text}></MarkdownRenderer>
+        <ArticleHeader />
+        <MarkdownRenderer markdownText={text}></MarkdownRenderer>
+      </div>
     </div>
   );
 }
