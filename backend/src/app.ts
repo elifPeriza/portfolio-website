@@ -1,4 +1,5 @@
 import express from "express";
+import database from "./database";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -14,4 +15,9 @@ app.use("/static", express.static("public")); //für alle routes /static, serve 
 
 app.listen(EXPRESS_PORT, () => {
   console.log("Express listening on port", EXPRESS_PORT);
+  if (database.getConnection() == null) {
+    console.error("WARNING: Database connection failed");
+    process.exit(1);
+  }
+  console.log("DATABASE CONNECTED");
 });
