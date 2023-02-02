@@ -21,6 +21,10 @@ module.exports = {
         black: "#302518",
         "violet-bg": "#FAFAFF",
       },
+      screens: {
+        headerTablet: { max: "550px" },
+        headerBreakpoint: { max: "800px" },
+      },
     },
   },
 
