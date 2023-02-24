@@ -11,7 +11,6 @@ export default function ArticleCard({
   return (
     <Link
       href={`/writing/${id}/${title.split(" ").join("-")}`}
-      passHref
       className="block h-full"
     >
       <div className="bg-white border-2 border-violet-primary rounded-xl px-6 py-6 h-full ">
