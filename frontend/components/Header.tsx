@@ -27,6 +27,7 @@ export default function Header() {
                 src={ProfilePic}
                 width={250}
                 height={250}
+                unoptimized={true}
               ></Image>
             </div>
           </div>

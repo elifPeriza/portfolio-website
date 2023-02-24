@@ -37,7 +37,13 @@ export default function Project() {
         </div>
       </div>
       <div className="hidden mx-auto flex-row justify-center relative min-w-[250px] max-h-[250px] rounded-xl overflow-hidden shadow-sm sm:flex ">
-        <Image alt="musique" src={MusiQue} width={250} height={250}></Image>
+        <Image
+          alt="musique"
+          src={MusiQue}
+          width={250}
+          height={250}
+          unoptimized={true}
+        ></Image>
       </div>
     </div>
   );
