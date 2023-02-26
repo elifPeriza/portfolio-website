@@ -8,12 +8,12 @@ export default function Web({ articles }: any) {
   //   const { release_date, title, tag, teaser } = articles[0];
   return (
     <>
-      <div className=" mx-auto px-[5%] max-w-[1030px]">
+      <div className=" mx-auto px-[5%] max-w-[1200px]">
         <Navbar />
         <Header />
       </div>
       <div className="bg-violet-bg w-full mt-8">
-        <div className="mx-auto px-[5%] max-w-[1030px]">
+        <div className="mx-auto px-[5%] max-w-[1200px]">
           <h2 className=" underline  decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none]  font-poppins text-black font-bold text-xl pt-7 sm:text-2xl sm:pt-10 ">
             Work
           </h2>

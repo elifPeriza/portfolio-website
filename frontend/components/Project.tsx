@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Button from "./Button";
 import Tag from "./Tag";
-import MusiQue from "../public/musiQue.jpg";
+import MusiQue from "../public/musiQue-new.webp";
 
 export default function Project() {
   return (
-    <div className="flex flex-row justify-between gap-3 pt-5 pb-8 sm:pt-7 sm:pb-10">
+    <div className="flex flex-row justify-between gap-3 pt-5 pb-8  sm:pt-7 sm:pb-10">
       <div className="flex flex-col">
         <h2
           className="font-poppins text-black font-bold
@@ -14,9 +14,14 @@ export default function Project() {
           musiQue
         </h2>
         <p className="font-noto text-base  text-black mb-4 max-w-[500px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis in
-          eu mi bibendum neque egestas congue quisque egestas.
+          musiQue offers music lovers a chance to discover new music through the
+          official Spotify API. Using React.js and API implementation, the
+          website displays the most popular songs and trending artists for
+          selected genres, with new updates every week. Users can preview songs,
+          shuffle playlists, and listen to top tracks from specific countries.
+          The recommended section highlights standout tracks that catch our
+          team's attention. A group project with Isamu Schlothauer, Joao Mota,
+          Diogo Augustinho and Iryna Kukuruza.
         </p>
         <div className="flex flex-wrap gap-3 mb-8">
           <Tag>React</Tag>
@@ -36,12 +41,12 @@ export default function Project() {
           </Button>
         </div>
       </div>
-      <div className="hidden mx-auto flex-row justify-center relative min-w-[250px] max-h-[250px] rounded-xl overflow-hidden shadow-sm sm:flex ">
+      <div className="hidden sm:block">
         <Image
           alt="musique"
           src={MusiQue}
-          width={250}
-          height={250}
+          width={450}
+          height={300}
           unoptimized={true}
         ></Image>
       </div>
