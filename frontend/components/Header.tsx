@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ProfilePic from "../public/elif2.png";
+import ProfilePic from "../public/elif2.jpg";
 import LinkedInLogo from "../public/Li-In-Bug.png";
 import GithubLogo from "../public/github-mark.svg";
 
@@ -55,13 +55,16 @@ export default function Header() {
           </div>
         </div>
         <div className=" headerTablet:hidden flex flex-row justify-center relative w-full ">
-          <Image
-            className="squircle object-cover aspect-[1/1] shadow-sm"
-            alt="my profile picture"
-            src={ProfilePic}
-            width={250}
-            height={250}
-          ></Image>
+          <div className="aspect-square w-[250px] relative ">
+            <Image
+              className="squircle object-cover shadow-sm"
+              alt="my profile picture"
+              src={ProfilePic}
+              fill
+              sizes="(max-width: 800px) 400px, 
+              500px"
+            ></Image>
+          </div>
         </div>
       </div>
     </>
