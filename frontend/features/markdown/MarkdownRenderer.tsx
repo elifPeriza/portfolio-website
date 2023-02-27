@@ -5,6 +5,7 @@ import { ArticleH3 } from "./ArticleH3";
 import { ArticleImage } from "./ArticleImage";
 import { ArticleLink } from "./ArticleLink";
 import { ArticleParagraph } from "./ArticleParagraph";
+import { ArticleCode } from "./ArticleCode";
 
 export const MarkdownRenderer = ({ markdownText }: any) => {
   // eslint-disable-next-line react/no-children-prop
@@ -17,6 +18,7 @@ export const MarkdownRenderer = ({ markdownText }: any) => {
         h3: ArticleH3,
         p: ArticleParagraph,
         a: ArticleLink,
+        code: ArticleCode,
       }}
     ></ReactMarkdown>
   );
