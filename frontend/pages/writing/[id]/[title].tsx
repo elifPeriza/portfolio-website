@@ -11,7 +11,9 @@ export default function Article({ article }: any) {
     <div className="w-full bg-violet-bg">
       <div className="mx-auto px-5 max-w-[700px] pb-24 sm:px-9">
         <div className="flex flex-row justify-end pt-8">
-          <Button href="/">Go Back</Button>
+          <Button href="/" variant="secondary">
+            Go Back
+          </Button>
         </div>
 
         <ArticleHeader

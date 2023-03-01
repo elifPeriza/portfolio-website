@@ -33,10 +33,15 @@ export default function Project() {
           <Button
             href="https://musique.wcs-student-projects.d-a-pfeiffer.info/"
             target="_blank"
+            variant="primary"
           >
             Go to Website
           </Button>
-          <Button href="https://github.com/elifPeriza/MusiQue" target="_blank">
+          <Button
+            href="https://github.com/elifPeriza/MusiQue"
+            target="_blank"
+            variant="primary"
+          >
             Github Repo
           </Button>
         </div>

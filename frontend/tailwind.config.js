@@ -19,6 +19,7 @@ module.exports = {
         "neon-primary": "#D3FA48",
         "neon-light": "#E4FB94",
         "violet-secondary": "#6C52FF",
+        "violet-button": "#6F5BF0",
         black: "#302518",
         "violet-bg": "#FAFAFF",
       },
