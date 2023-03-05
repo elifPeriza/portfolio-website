@@ -10,9 +10,9 @@ type ButtonProps = {
 
 const buttonVariants = {
   primary:
-    "font-noto bg-violet-button font-normal text-[0.925rem] text-white border-2 border-violet-button rounded-md px-3 py-1 drop-shadow-md hover:filter hover:saturate-[0.9] hover:brightness-[0.9] hover:contrast-[1.2] ",
+    "font-inter bg-violet-button font-normal text-[0.925rem] text-white border-2 border-violet-button rounded-md px-3 py-1 drop-shadow-md hover:filter hover:saturate-[0.9] hover:brightness-[0.9] hover:contrast-[1.2] ",
   secondary:
-    "font-noto bg-white font-bold text-[0.925rem] text-violet-button border-2 border-violet-button rounded-md px-3 py-1 drop-shadow-sm hover:bg-violet-button hover:font-normal hover:text-white",
+    "font-inter bg-white font-bold text-[0.925rem] text-violet-button border-2 border-violet-button rounded-md px-3 py-1 drop-shadow-sm hover:bg-violet-button hover:font-normal hover:text-white",
 };
 
 export default function Button({

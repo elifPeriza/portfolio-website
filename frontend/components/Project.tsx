@@ -75,7 +75,7 @@ export default function Project() {
               >
                 {project.title}
               </h2>
-              <p className="font-noto text-base  text-black mb-4 max-w-[500px] ">
+              <p className="font-inter text-base  text-black mb-4 max-w-[500px] ">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-3 mb-8 max-w-[500px]">
