@@ -9,9 +9,10 @@ module.exports = {
   theme: {
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
-      lato: ["Lato", "sans-serif"],
       noto: ["Noto Sans", "sans-serif"],
-      robotoMono: ["Roboto Mono", "sans-serif"],
+      robotoMono: ["Roboto Mono", "monospace"],
+      inter: ["Inter", "sans-serif"],
+      ibm: ["IBM Plex Mono", "monospace"],
     },
     extend: {
       colors: {
