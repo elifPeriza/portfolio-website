@@ -13,7 +13,7 @@ export default function Header() {
           </clipPath>
         </defs>
       </svg>
-      <div className="flex flex-row gap-4 items-center py-7  mt-8 headerBreakpoint:px-0">
+      <div className="flex flex-row gap-4 items-center py-7  mt-8 headerBreakpoint:px-0 sm:mt-16">
         <div className="flex flex-col ">
           <div className="flex flex-row gap-4 mb-5 items-center ">
             <h1 className="font-poppins font-bold text-black text-2xl  mb-3 sm:text-3xl">
@@ -33,8 +33,8 @@ export default function Header() {
           </div>
 
           <p className="font-noto font-normal text-base text-black mb-4 sm:text-lg sm:mb-6 ">
-            I am passionate about building things that not only look good, but
-            provide a meaningful user experience.
+            I am passionate about building things on the internet that not only
+            look great, but provide a seamless and enjoyable user experience.
           </p>
           <div className="flex flex-row gap-3">
             <a
@@ -61,7 +61,7 @@ export default function Header() {
               alt="my profile picture"
               src={ProfilePic}
               fill
-              sizes="(max-width: 800px) 400px, 
+              sizes="(max-width: 800px) 400px,
               500px"
             ></Image>
           </div>
