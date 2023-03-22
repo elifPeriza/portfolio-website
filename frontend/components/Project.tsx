@@ -67,7 +67,10 @@ export default function Project() {
     <>
       {projects.map((project) => {
         return (
-          <div className="flex flex-row justify-between gap-6 pt-5 pb-8  sm:pt-7 sm:pb-14">
+          <div
+            key={project.title}
+            className="flex flex-row justify-between gap-6 pt-5 pb-8  sm:pt-7 sm:pb-14"
+          >
             <div className="flex flex-col">
               <h2
                 className="font-poppins text-black font-bold
@@ -80,7 +83,7 @@ export default function Project() {
               </p>
               <div className="flex flex-wrap gap-3 mb-8 max-w-[500px]">
                 {project.stack.map((item) => (
-                  <Tag>{item}</Tag>
+                  <Tag key={item}>{item}</Tag>
                 ))}
               </div>
 
