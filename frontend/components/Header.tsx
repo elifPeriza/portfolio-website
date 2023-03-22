@@ -32,7 +32,7 @@ export default function Header() {
             </div>
           </div>
 
-          <p className="font-noto font-normal text-base text-black mb-4 sm:text-lg sm:mb-6 ">
+          <p className="font-inter font-normal text-base text-black mb-4 sm:text-lg sm:mb-6 ">
             I am passionate about building things on the internet that not only
             look great, but provide a seamless and enjoyable user experience.
           </p>
