@@ -1,10 +1,10 @@
 import ArticleHeader from "@/components/ArticleHeader";
 import Button from "@/components/Button";
+import { apiURL } from "@/config/urls";
 import { MarkdownRenderer } from "@/features/markdown/MarkdownRenderer";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
-import Link from "next/link";
 
-const backendURL = "http://localhost:5005";
+import Link from "next/link";
 
 export default function Article({ article }: any) {
   return (
@@ -28,10 +28,10 @@ export default function Article({ article }: any) {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const response = await fetch(
-    `${backendURL}/api/articles/${context.params?.id}`
-  );
+  console.log(apiURL);
+  const response = await fetch(`${apiURL}/api/articles/${context.params?.id}`);
   const data = await response.json();
+  //console.log(data);
   return {
     props: {
       article: data,
@@ -41,12 +41,14 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${backendURL}/api/articles`);
+  const response = await fetch(`${apiURL}/api/articles`);
   const data = await response.json();
-
   const paths = data.map((item: any) => {
     return {
-      params: { id: `${item.id}`, title: item.title.split(" ").join("-") }, // we define the params for which next js should build this page at build time
+      params: {
+        id: `${item.id}`,
+        title: item.title.split(" ").join("-").split(":").join(""),
+      }, // we define the params for which next js should build this page at build time
     };
   });
   console.log(paths);

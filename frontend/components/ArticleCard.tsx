@@ -10,7 +10,7 @@ export default function ArticleCard({
 }: any) {
   return (
     <Link
-      href={`/writing/${id}/${title.split(" ").join("-")}`}
+      href={`/writing/${id}/${title.split(" ").join("-").split(":").join("")}`}
       className="block h-full"
     >
       <div className="bg-white border-2 border-violet-primary rounded-xl px-6 py-6 h-full ">

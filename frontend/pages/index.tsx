@@ -2,8 +2,8 @@ import ArticleCard from "@/components/ArticleCard";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Project from "@/components/Project";
+import { apiURL } from "@/config/urls";
 
-export const backendURL = "http://localhost:5005";
 export default function Web({ articles }: any) {
   //   const { release_date, title, tag, teaser } = articles[0];
   return (
@@ -49,7 +49,7 @@ export default function Web({ articles }: any) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(`${backendURL}/api/articles`);
+  const response = await fetch(`${apiURL}/api/articles`);
   const data = await response.json();
   return {
     props: {

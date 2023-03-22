@@ -1,4 +1,4 @@
-import { backendURL } from "@/pages";
+import { apiURL } from "@/config/urls";
 import Button from "./Button";
 
 export default function Navbar() {
@@ -8,7 +8,7 @@ export default function Navbar() {
         EG<span className="text-violet-secondary">.</span>
       </h2>
       <Button
-        href={`${backendURL}/static/files/resume.pdf`}
+        href={`${apiURL}/static/files/resume.pdf`}
         target="_blank"
         variant="secondary"
       >
