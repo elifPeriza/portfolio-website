@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ProfilePic from "../public/elif2.jpg";
-import LinkedInLogo from "../public/Li-In-Bug.png";
+import LinkedInLogo from "../public/linkedin-icon.png";
 import GithubLogo from "../public/github-mark.svg";
 
 export default function Header() {
