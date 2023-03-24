@@ -13,6 +13,7 @@ module.exports = {
       robotoMono: ["Roboto Mono", "monospace"],
       inter: ["Inter", "sans-serif"],
       ibm: ["IBM Plex Mono", "monospace"],
+      secular: ["Secular One", "sans-serif"],
     },
     extend: {
       colors: {
