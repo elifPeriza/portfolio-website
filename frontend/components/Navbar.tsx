@@ -7,7 +7,7 @@ export default function Navbar() {
     <div className="flex flex-row justify-between items-center py-6 ">
       <LogoPrimary />
       <Button
-        href={`${apiURL}/static/files/resume.pdf`}
+        href={`${apiURL}/static/files/resume-elif.pdf`}
         target="_blank"
         variant="secondary"
       >
