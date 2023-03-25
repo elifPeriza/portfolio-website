@@ -36,10 +36,9 @@ const projects = [
       "MySQL",
       "Figma",
     ],
-    // urlWebsite: "https://musique.wcs-student-projects.d-a-pfeiffer.info/",
-    urlGithub: "https://github.com/Skyhub-aero/skyhub.aero",
     image: Skyhub,
     imageAlt: "screenshots of the website Skyhub",
+    urlWebsite: "https://skyhubaero-staging-web.up.railway.app/",
   },
 
   {
@@ -55,8 +54,8 @@ const projects = [
       "MySQL",
       "Figma",
     ],
-    // urlWebsite: "https://musique.wcs-student-projects.d-a-pfeiffer.info/",
-    urlGithub: "https://github.com/Skyhub-aero/skyhub.aero",
+
+    urlGithub: "https://github.com/elifPeriza/portfolio-website",
     image: Portfolio,
     imageAlt: "screenshots of my portfolio website",
   },
@@ -97,14 +96,15 @@ export default function Project() {
                     Go to Website
                   </Button>
                 )}
-
-                <Button
-                  href={project.urlGithub}
-                  target="_blank"
-                  variant="primary"
-                >
-                  Github Repo
-                </Button>
+                {project.urlGithub && (
+                  <Button
+                    href={project.urlGithub}
+                    target="_blank"
+                    variant="primary"
+                  >
+                    Github Repo
+                  </Button>
+                )}
               </div>
             </div>
             <div className="hidden sm:block">
