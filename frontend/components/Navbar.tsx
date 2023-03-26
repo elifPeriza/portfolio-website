@@ -1,4 +1,3 @@
-import { apiURL } from "@/config/urls";
 import Button from "./Button";
 import LogoPrimary from "./LogoPrimary";
 
@@ -7,7 +6,7 @@ export default function Navbar() {
     <div className="flex flex-row justify-between items-center py-6 ">
       <LogoPrimary />
       <Button
-        href={`${apiURL}/static/files/resume.pdf`}
+        href={`/resume-elifgoemleksiz.pdf`}
         target="_blank"
         variant="secondary"
       >
