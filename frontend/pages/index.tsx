@@ -28,7 +28,7 @@ export default function Web({ articles }: any) {
               Writing
             </h3>
 
-            <div className="grid grid-cols-1 gap-5 pt-5 pb-8 sm:grid-cols-2 sm:gap-8 sm:pt-7 sm:pb-10">
+            <div className="grid grid-cols-1 gap-5 pt-5 pb-14 sm:grid-cols-2 sm:gap-8 sm:pt-7 sm:pb-20">
               {articles.map((article: any) => {
                 return (
                   <ArticleCard

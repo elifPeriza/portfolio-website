@@ -9,7 +9,7 @@ export default function Article({ article }: any) {
   return (
     <div>
       <div className="w-full bg-violet-bg pb-0 min-h-[calc(100vh-92px)] ">
-        <div className="mx-auto px-5 max-w-[850px] pb-24  sm:px-9  ">
+        <div className="mx-auto px-5 max-w-[850px] pb-14  sm:px-9 sm:pb-20  ">
           <div className="flex flex-row justify-end pt-8">
             <Button href="/" variant="secondary">
               Go Back
