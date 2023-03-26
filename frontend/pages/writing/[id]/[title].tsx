@@ -5,13 +5,11 @@ import { apiURL } from "@/config/urls";
 import { MarkdownRenderer } from "@/features/markdown/MarkdownRenderer";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 
-import Link from "next/link";
-
 export default function Article({ article }: any) {
   return (
     <div>
       <div className="w-full bg-violet-bg pb-0 min-h-[calc(100vh-92px)] ">
-        <div className="mx-auto px-5 max-w-[700px] pb-24  sm:px-9  ">
+        <div className="mx-auto px-5 max-w-[850px] pb-24  sm:px-9  ">
           <div className="flex flex-row justify-end pt-8">
             <Button href="/" variant="secondary">
               Go Back
@@ -35,7 +33,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   console.log(apiURL);
   const response = await fetch(`${apiURL}/api/articles/${context.params?.id}`);
   const data = await response.json();
-  //console.log(data);
+
   return {
     props: {
       article: data,
