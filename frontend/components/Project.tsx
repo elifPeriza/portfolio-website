@@ -9,12 +9,12 @@ const projects = [
   {
     title: "musiQue",
     description: `musiQue offers music lovers a chance to discover new music through the
-            official Spotify API. Using React.js and API implementation, the
+            Spotify API. Using React and API implementation, the
             website displays the most popular songs and trending artists for
             selected genres, with new updates every week. Users can preview songs,
             shuffle playlists, and listen to top tracks from specific countries.
             The recommended section highlights standout tracks that catch our
-            team's attention. A group project with Isamu Schlothauer, Joao Mota,
+            team's attention. A group project with Isamu Schlothauer, João Mota,
             Diogo Augustinho and Iryna Kukuruza.`,
     stack: ["React", "Spotify API", "CSS", "Figma"],
     urlWebsite: "https://musique.wcs-student-projects.d-a-pfeiffer.info/",
@@ -24,7 +24,7 @@ const projects = [
   },
   {
     title: "Skyhub (Rework)",
-    description: `The task was to rework a second version of the website using a modern stack, with a focus on improving the user experience and creating a fully responsive version. Skyhub aimes at airlines and recruitment companies, as well as individuals searching for aviation jobs or interested in careers in the industry. Features include: "Job Market" where airlines or recruiters can post jobs, insights into specific airlines and salaries for which every visitor can submit new information, a registration and login process.  A group project with Isamu Schlothauer, Joao Mota, Diogo Augustinho and Iryna Kukuruza.`,
+    description: `The task was to rework a second version of the website using a modern stack, with a focus on improving the user experience and creating a fully responsive version. Skyhub aimes at airlines and recruitment companies, as well as individuals searching for aviation jobs or interested in careers in the industry. Features include: "Job Market" where airlines or recruiters can post jobs, insights into specific airlines and salaries for which every visitor can submit new information, a registration and login process.  A group project with Isamu Schlothauer, João Mota, Diogo Augustinho and Iryna Kukuruza.`,
     stack: [
       "React",
       "Next.js",
@@ -43,7 +43,7 @@ const projects = [
 
   {
     title: "Portfolio",
-    description: `My portfolio showcases my web development projects and skills, along with a blog section where I share my insights and experiences. The blog posts are formatted using React Markdown and React Syntax Highlighter, and the blog section is built using Next.js with Incremental Static Regeneration (ISR) for optimal performance.`,
+    description: `My portfolio showcases my web development projects and skills, along with a blog section where I share my insights and experiences. The blog posts are rendered using the react-markdown and react-syntax-highlighter libraries. The blog section is built with Incremental Static Regeneration (ISR) of Next.js for optimal performance and my database is hosted on PlanetScale.`,
     stack: [
       "React",
       "Next.js",
