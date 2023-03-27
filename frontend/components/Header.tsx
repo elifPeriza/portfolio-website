@@ -22,16 +22,7 @@ export default function Header() {
               <Dot variant="violet" />
               <br /> Front-End Developer
             </h1>
-            <div className="hidden max-w-[150px] headerTablet:block">
-              <Image
-                className="squircle object-cover aspect-[1/1] shadow-sm"
-                alt="my profile picture"
-                src={ProfilePic}
-                width={250}
-                height={250}
-                unoptimized={true}
-              ></Image>
-            </div>
+            <div className="hidden squircle bg-[url('/elif2.webp')] bg-cover bg-center aspect-square flex-1 min-w-[130px] max-w-[150px] headerTablet:block"></div>
           </div>
 
           <p className="font-inter font-normal text-base text-black mb-4 sm:text-lg sm:mb-6 ">
@@ -57,16 +48,7 @@ export default function Header() {
           </div>
         </div>
         <div className=" headerTablet:hidden flex flex-row justify-center relative w-full ">
-          <div className="aspect-square w-[250px] relative ">
-            <Image
-              className="squircle object-cover shadow-sm"
-              alt="my profile picture"
-              src={ProfilePic}
-              fill
-              sizes="(max-width: 800px) 400px,
-              500px"
-            ></Image>
-          </div>
+          <div className=" squircle bg-[url('/elif2.webp')] bg-cover bg-center aspect-square w-[250px] relative "></div>
         </div>
       </div>
     </>
