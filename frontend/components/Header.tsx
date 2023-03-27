@@ -47,8 +47,8 @@ export default function Header() {
             </a>
           </div>
         </div>
-        <div className=" relative flex w-full flex-row justify-center headerTablet:hidden ">
-          <div className=" squircle relative h-[200px] w-[200px] bg-[url('/elif2.webp')] bg-cover bg-center sm:h-[220px] sm:w-[220px] md:h-[240px] md:w-[240px] lg:h-[260px] lg:w-[260px] "></div>
+        <div className="  flex w-full flex-row justify-center headerTablet:hidden ">
+          <div className=" squircle h-[200px]  w-[200px] translate-x-0 bg-[url('/elif2.webp')] bg-cover bg-center sm:h-[220px] sm:w-[220px] md:h-[240px] md:w-[240px] lg:h-[260px] lg:w-[260px] "></div>
         </div>
       </div>
     </>
