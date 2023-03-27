@@ -2,6 +2,7 @@ import Image from "next/image";
 import ProfilePic from "../public/elif2.jpg";
 import LinkedInLogo from "../public/linkedin-icon.png";
 import GithubLogo from "../public/github-mark.svg";
+import Dot from "./Dot";
 
 export default function Header() {
   return (
@@ -17,7 +18,8 @@ export default function Header() {
         <div className="flex flex-col ">
           <div className="flex flex-row gap-4 mb-5 items-center ">
             <h1 className="font-poppins font-bold text-black text-2xl  mb-3 sm:text-3xl">
-              Hi, I’m Elif<span className="text-violet-secondary">.</span>
+              Hi, I’m Elif
+              <Dot variant="violet" />
               <br /> Front-End Developer
             </h1>
             <div className="hidden max-w-[150px] headerTablet:block">
