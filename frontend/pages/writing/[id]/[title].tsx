@@ -30,7 +30,6 @@ export default function Article({ article }: any) {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  console.log(apiURL);
   const response = await fetch(`${apiURL}/api/articles/${context.params?.id}`);
   const data = await response.json();
 
@@ -53,7 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       }, // we define the params for which next js should build this page at build time
     };
   });
-  console.log(paths);
+
   return {
     paths,
     fallback: "blocking",
