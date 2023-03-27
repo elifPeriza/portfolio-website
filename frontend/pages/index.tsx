@@ -1,4 +1,5 @@
 import ArticleCard from "@/components/ArticleCard";
+import Dot from "@/components/Dot";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
@@ -22,13 +23,14 @@ export default function Web({ articles }: any) {
             <Project />
             <h2 className="font-poppins font-bold max-w-3xl pt-8 text-black text-2xl mb-3 sm:text-3xl">
               I love to share my learnings through writing, check out my latest
-              posts<span className="text-violet-secondary">.</span>
+              posts
+              <Dot variant="violet" />
             </h2>
             <h3 className=" underline  decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none]  font-poppins text-black font-bold text-xl pt-4 sm:text-2xl sm:pt-7 ">
               Writing
             </h3>
 
-            <div className="grid grid-cols-1 gap-5 pt-5 pb-8 sm:grid-cols-2 sm:gap-8 sm:pt-7 sm:pb-10">
+            <div className="grid grid-cols-1 gap-5 pt-5 pb-14 sm:grid-cols-2 sm:gap-8 sm:pt-7 sm:pb-20">
               {articles.map((article: any) => {
                 return (
                   <ArticleCard

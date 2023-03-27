@@ -3,7 +3,7 @@ import LogoSecondary from "./LogoSecondary";
 export default function Footer() {
   return (
     <div className=" bg-black flex flex-col justify-center items-center ">
-      <div className="pt-4 pb-1">
+      <div className="pt-4 ">
         <LogoSecondary variant="white" />
       </div>
       <p className="text-white text-sm font-inter pb-5">
