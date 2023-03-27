@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ProfilePic from "../public/elif2.jpg";
+import ProfilePic from "../public/elif2.webp";
 import LinkedInLogo from "../public/linkedin-icon.png";
 import GithubLogo from "../public/github-mark.svg";
 import Dot from "./Dot";
