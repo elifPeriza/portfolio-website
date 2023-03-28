@@ -28,6 +28,7 @@ module.exports = {
       screens: {
         headerTablet: { max: "550px" },
         headerBreakpoint: { max: "800px" },
+        blogIntroBreakpoint: { min: "357px", max: "363px" },
       },
     },
   },
