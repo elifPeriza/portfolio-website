@@ -9,7 +9,11 @@ import { ArticleCode } from "./ArticleCode";
 import { UnorderedList } from "./UnorderedList";
 import { ListItem } from "./ListItem";
 
-export const MarkdownRenderer = ({ markdownText }: any) => {
+type MarkdownRendererProps = {
+  markdownText: string;
+};
+
+export const MarkdownRenderer = ({ markdownText }: MarkdownRendererProps) => {
   // eslint-disable-next-line react/no-children-prop
   return (
     <ReactMarkdown

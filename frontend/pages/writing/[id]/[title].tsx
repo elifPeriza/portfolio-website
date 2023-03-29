@@ -3,13 +3,27 @@ import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import { apiURL } from "@/config/urls";
 import { MarkdownRenderer } from "@/features/markdown/MarkdownRenderer";
+import { ArticlePreview } from "@/types/Articles";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 
-export default function Article({ article }: any) {
+type Article = {
+  id: number;
+  title: string;
+  keywords: string;
+  teaser: string;
+  release_date: string;
+  text: string;
+};
+
+type ArticleProps = {
+  article: Article;
+};
+
+export default function Article({ article }: ArticleProps) {
   return (
     <div>
-      <div className="w-full bg-violet-bg pb-0 min-h-[calc(100vh-92px)] ">
-        <div className="mx-auto px-5 max-w-[850px] pb-14  sm:px-9 sm:pb-20  ">
+      <div className="min-h-[calc(100vh-92px)] w-full bg-violet-bg pb-0 ">
+        <div className="mx-auto max-w-[850px] px-5 pb-14  sm:px-9 sm:pb-20  ">
           <div className="flex flex-row justify-end pt-8">
             <Button href="/" variant="secondary">
               Go Back
@@ -43,8 +57,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(`${apiURL}/api/articles`);
+
   const data = await response.json();
-  const paths = data.map((item: any) => {
+  const paths = data.map((item: ArticlePreview) => {
     return {
       params: {
         id: `${item.id}`,

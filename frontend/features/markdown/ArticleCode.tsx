@@ -1,14 +1,21 @@
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
+import { CodeComponent } from "react-markdown/lib/ast-to-react";
+
+//CodeComponent is a type provided from the react-markdown library
 
 // With the light build  we need to import and register the TypeScript and TSX languages with the syntax highlighter
 SyntaxHighlighter.registerLanguage("tsx", tsx);
 SyntaxHighlighter.registerLanguage("typescript", typescript);
 
-export const ArticleCode = ({ inline, className, children, ...props }: any) => {
+export const ArticleCode: CodeComponent = ({
+  inline,
+  className,
+  children,
+  node,
+}) => {
   // Extract the language from the className using a regular expression
   const match = /language-(\w+)/.exec(className || "");
 
@@ -25,13 +32,10 @@ export const ArticleCode = ({ inline, className, children, ...props }: any) => {
       }}
       language={match?.[1] || "typescript"}
       PreTag="div"
-      {...props}
+      node={node}
     />
   ) : (
-    <code
-      className={` bg-gray-200 rounded-sm font-normal ${className} `}
-      {...props}
-    >
+    <code className={` rounded-sm bg-gray-200 font-normal ${className} `}>
       {children}
     </code>
   );
