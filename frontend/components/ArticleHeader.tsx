@@ -1,14 +1,24 @@
-export default function ArticleHeader({ date, title, keywords }: any) {
+type ArticleHeaderProps = {
+  date: string;
+  title: string;
+  keywords: string;
+};
+
+export default function ArticleHeader({
+  date,
+  title,
+  keywords,
+}: ArticleHeaderProps) {
   return (
     <div className="pt-20 sm:pt-32">
-      <h3 className="font-ibm text-violet-secondary text-sm mb-4 ">{date}</h3>
-      <h1 className="font-poppins font-bold text-black text-2xl  mb-3 sm:text-3xl">
+      <h3 className="mb-4 font-ibm text-sm text-violet-secondary ">{date}</h3>
+      <h1 className="mb-3 font-poppins text-2xl font-bold  text-black sm:text-3xl">
         {title}
       </h1>
-      <h4 className="font-ibm text-violet-secondary text-sm mb-3 ">
+      <h4 className="mb-3 font-ibm text-sm text-violet-secondary ">
         {keywords}
       </h4>
-      <hr className="border-t-2 border-violet-primary mb-8"></hr>
+      <hr className="mb-8 border-t-2 border-violet-primary"></hr>
     </div>
   );
 }

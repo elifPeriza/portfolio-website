@@ -1,3 +1,5 @@
-export const UnorderedList = ({ children }: any) => {
-  return <ul className=" list-disc list-inside ">{children}</ul>;
+import { UnorderedListComponent } from "react-markdown/lib/ast-to-react";
+
+export const UnorderedList: UnorderedListComponent = ({ children }) => {
+  return <ul className=" list-inside list-disc ">{children}</ul>;
 };

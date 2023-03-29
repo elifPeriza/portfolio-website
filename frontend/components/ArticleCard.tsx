@@ -1,3 +1,4 @@
+import { ArticlePreview } from "@/types/Articles";
 import Link from "next/link";
 import Tag from "./Tag";
 
@@ -7,23 +8,23 @@ export default function ArticleCard({
   teaser,
   tag,
   id,
-}: any) {
+}: ArticlePreview) {
   return (
     <Link
       href={`/writing/${id}/${title.split(" ").join("-").split(":").join("")}`}
       className="block h-full"
     >
-      <div className="bg-white border-2 border-violet-primary rounded-xl px-6 py-6 h-full ">
-        <h3 className="font-ibm text-violet-secondary text-sm mb-2 ">
+      <div className="h-full rounded-xl border-2 border-violet-primary bg-white px-6 py-6 ">
+        <h3 className="mb-2 font-ibm text-sm text-violet-secondary ">
           {release_date}
         </h3>
         <h2
-          className="font-poppins text-black font-bold
-     text-lg mb-3 sm:text-xl "
+          className="mb-3 font-poppins text-lg
+     font-bold text-black sm:text-xl "
         >
           {title}
         </h2>
-        <p className="font-inter text-base  text-black mb-4">{teaser}</p>
+        <p className="mb-4 font-inter  text-base text-black">{teaser}</p>
         <div className=""></div>
         <Tag>{tag}</Tag>
       </div>

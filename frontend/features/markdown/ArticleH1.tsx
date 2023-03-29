@@ -1,6 +1,10 @@
-export const ArticleH1 = ({ children }: any) => {
+type ArticleH1Props = {
+  children: React.ReactNode;
+};
+
+export const ArticleH1 = ({ children }: ArticleH1Props) => {
   return (
-    <h1 className=" font-poppins font-bold text-black text-2xl  mb-3 sm:text-3xl  ">
+    <h1 className=" mb-3 font-poppins text-2xl font-bold  text-black sm:text-3xl  ">
       {children}
     </h1>
   );

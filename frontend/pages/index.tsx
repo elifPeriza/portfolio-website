@@ -5,9 +5,13 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Project from "@/components/Project";
 import { apiURL } from "@/config/urls";
+import { ArticlePreview } from "@/types/Articles";
 
-export default function Web({ articles }: any) {
-  //   const { release_date, title, tag, teaser } = articles[0];
+type HomepageProps = {
+  articles: ArticlePreview[];
+};
+
+export default function Home({ articles }: HomepageProps) {
   return (
     <>
       <div className="bg-violet-bg">
@@ -31,7 +35,7 @@ export default function Web({ articles }: any) {
             </h3>
 
             <div className="grid grid-cols-1 gap-5 pt-5 pb-14 sm:grid-cols-2 sm:gap-8 sm:pt-7 sm:pb-20">
-              {articles.map((article: any) => {
+              {articles.map((article: ArticlePreview) => {
                 return (
                   <ArticleCard
                     key={article.title}
