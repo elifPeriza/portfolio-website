@@ -7,11 +7,17 @@ import Project from "@/components/Project";
 import { apiURL } from "@/config/urls";
 import { ArticlePreview } from "@/types/Articles";
 
-type HomepageProps = {
-  articles: ArticlePreview[];
+type ProjectCommits = {
+  repo: string;
+  commmits: string[];
 };
 
-export default function Home({ articles }: HomepageProps) {
+type HomepageProps = {
+  articles: ArticlePreview[];
+  commitsArray: ProjectCommits[];
+};
+
+export default function Home({ articles, commitsArray }: HomepageProps) {
   return (
     <>
       <div className="bg-violet-bg">
@@ -58,12 +64,61 @@ export default function Home({ articles }: HomepageProps) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(`${apiURL}/api/articles`);
-  const data = await response.json();
+  // fetch article data
+  const articlesResponse = await fetch(`${apiURL}/api/articles`);
+  const articles = await articlesResponse.json();
+
+  // fetch Github data
+  const token = process.env.GITHUB_TOKEN;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github.v3+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+
+  // portfolio
+  const portfolioUrl =
+    "https://api.github.com/repos/elifPeriza/portfolio-website/commits?author=elifPeriza&per_page=100";
+  const portfolioResponse = await fetch(portfolioUrl, { headers });
+  const portfolioData = await portfolioResponse.json();
+
+  // skyhub
+  const skyhubUlr =
+    "https://api.github.com/repos/Skyhub-aero/skyhub.aero/commits?sha=cbee2d5e34604479e578a19c08113495895cb2ee&per_page=100&author=elifPeriza";
+  const skyhubResponse = await fetch(skyhubUlr, { headers });
+  const skyhubData = await skyhubResponse.json();
+
+  // musiQue
+  const musiqueUrl =
+    "https://api.github.com/repos/elifPeriza/MusiQue/commits?sha=b6f1382882961006dc7544c178833871a030e74f&author=elifPeriza&per_page=100";
+  const musiqueResponse = await fetch(musiqueUrl, { headers });
+  const musiqueData = await musiqueResponse.json();
+
+  // function transforming response data into needed data
+  function createProjectCommits(fetchedData: any) {
+    const commitsArray = fetchedData.map((commit: any) => {
+      const { date } = commit.commit.author;
+      return date;
+    });
+    // extracting project name from commit url
+    const { url } = fetchedData[0].commit;
+    const repo = url.split("/")[5];
+    // constructing needed data
+    const projectCommits = { repo: repo, commits: commitsArray };
+    return projectCommits;
+  }
+
+  const portfolioCommits = createProjectCommits(portfolioData);
+  const skyhubCommits = createProjectCommits(skyhubData);
+  const musiqueCommits = createProjectCommits(musiqueData);
+
+  const commitsArray = [portfolioCommits, skyhubCommits, musiqueCommits];
+
   return {
     props: {
-      articles: data,
+      articles,
+      commitsArray,
     },
-    revalidate: 60 * 60,
+    revalidate: 1,
   };
 }
