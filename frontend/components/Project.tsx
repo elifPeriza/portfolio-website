@@ -80,14 +80,11 @@ export default function Project({ githubCommits }: ProjectProps) {
         const projectCommits = githubCommits.find(
           (projectData: ProjectCommits) => projectData.repo === project.repoName
         );
-        //console.log(projectCommits);
 
         const formattedCommitsArray = projectCommits?.commits?.map((date) => {
           const newDate = date.split("T")[0];
           return newDate;
         });
-
-        //console.log(formattedCommitsArray);
 
         const commitCountPerDate = formattedCommitsArray?.reduce(
           (acc, curr) => {
@@ -102,7 +99,14 @@ export default function Project({ githubCommits }: ProjectProps) {
           [] as { date: string; commitCount: number }[]
         );
 
-        console.log(commitCountPerDate);
+        //console.log(commitCountPerDate);
+
+        const commitCountTotal = commitCountPerDate?.reduce((acc, curr) => {
+          acc += curr.commitCount;
+          return acc;
+        }, 0);
+
+        //console.log(commitCountTotal);
 
         return (
           <div
