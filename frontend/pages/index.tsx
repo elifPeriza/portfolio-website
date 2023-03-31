@@ -9,15 +9,15 @@ import { ArticlePreview } from "@/types/Articles";
 
 type ProjectCommits = {
   repo: string;
-  commmits: string[];
+  commits: string[];
 };
 
 type HomepageProps = {
   articles: ArticlePreview[];
-  commitsArray: ProjectCommits[];
+  githubCommits: ProjectCommits[];
 };
 
-export default function Home({ articles, commitsArray }: HomepageProps) {
+export default function Home({ articles, githubCommits }: HomepageProps) {
   return (
     <>
       <div className="bg-violet-bg">
@@ -30,7 +30,7 @@ export default function Home({ articles, commitsArray }: HomepageProps) {
             <h2 className=" font-poppins  text-xl font-bold text-black  underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl ">
               Work
             </h2>
-            <Project />
+            <Project githubCommits={githubCommits} />
             <h2 className="mb-3 max-w-3xl pt-8 font-poppins text-2xl font-bold text-black sm:text-3xl blogIntroBreakpoint:max-w-[301.5px] ">
               I love to share my learnings through writing, check out my latest
               posts
@@ -112,12 +112,12 @@ export async function getStaticProps() {
   const skyhubCommits = createProjectCommits(skyhubData);
   const musiqueCommits = createProjectCommits(musiqueData);
 
-  const commitsArray = [portfolioCommits, skyhubCommits, musiqueCommits];
+  const githubCommits = [portfolioCommits, skyhubCommits, musiqueCommits];
 
   return {
     props: {
       articles,
-      commitsArray,
+      githubCommits,
     },
     revalidate: 1,
   };

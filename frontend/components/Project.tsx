@@ -5,6 +5,15 @@ import MusiQue from "../public/musiQue-new.webp";
 import Skyhub from "../public/skyhub-new.webp";
 import Portfolio from "../public/portfolio.webp";
 
+type ProjectCommits = {
+  repo: string;
+  commits: string[];
+};
+
+type ProjectProps = {
+  githubCommits: ProjectCommits[];
+};
+
 const projects = [
   {
     title: "musiQue",
@@ -21,6 +30,7 @@ const projects = [
     urlGithub: "https://github.com/elifPeriza/MusiQue",
     image: MusiQue,
     imageAlt: "screenshots of the website Musique",
+    repoName: "MusiQue",
   },
   {
     title: "Skyhub (Rework)",
@@ -39,6 +49,7 @@ const projects = [
     image: Skyhub,
     imageAlt: "screenshots of the website Skyhub",
     urlWebsite: "https://skyhubaero-staging-web.up.railway.app/",
+    repoName: "skyhub.aero",
   },
 
   {
@@ -58,13 +69,41 @@ const projects = [
     urlGithub: "https://github.com/elifPeriza/portfolio-website",
     image: Portfolio,
     imageAlt: "screenshots of my portfolio website",
+    repoName: "portfolio-website",
   },
 ];
 
-export default function Project() {
+export default function Project({ githubCommits }: ProjectProps) {
   return (
     <>
       {projects.map((project) => {
+        const projectCommits = githubCommits.find(
+          (projectData: ProjectCommits) => projectData.repo === project.repoName
+        );
+        //console.log(projectCommits);
+
+        const formattedCommitsArray = projectCommits?.commits?.map((date) => {
+          const newDate = date.split("T")[0];
+          return newDate;
+        });
+
+        //console.log(formattedCommitsArray);
+
+        const commitCountPerDate = formattedCommitsArray?.reduce(
+          (acc, curr) => {
+            const existingDate = acc.findIndex((el) => el.date === curr);
+            if (existingDate !== -1) {
+              acc[existingDate].commitCount += 1;
+            } else {
+              acc.push({ date: curr, commitCount: 1 });
+            }
+            return acc;
+          },
+          [] as { date: string; commitCount: number }[]
+        );
+
+        console.log(commitCountPerDate);
+
         return (
           <div
             key={project.title}
@@ -72,15 +111,15 @@ export default function Project() {
           >
             <div className="flex flex-col">
               <h2
-                className="font-poppins text-black font-bold
-     text-lg mb-3 sm:text-xl "
+                className="mb-3 font-poppins text-lg
+     font-bold text-black sm:text-xl "
               >
                 {project.title}
               </h2>
-              <p className="font-inter text-base  text-black mb-4 max-w-[500px] ">
+              <p className="mb-4 max-w-[500px]  font-inter text-base text-black ">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-3 mb-8 max-w-[500px]">
+              <div className="mb-8 flex max-w-[500px] flex-wrap gap-3">
                 {project.stack.map((item) => (
                   <Tag key={item}>{item}</Tag>
                 ))}
