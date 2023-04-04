@@ -62,7 +62,7 @@ const projects = [
 
   {
     title: "Portfolio",
-    description: `My portfolio showcases my web development projects and skills, along with a blog section where I share my insights and experiences. The blog posts are rendered using the react-markdown and react-syntax-highlighter libraries. The blog section is built with Incremental Static Regeneration (ISR) of Next.js for optimal performance and my database is hosted on PlanetScale.`,
+    description: `My portfolio showcases my web development projects and skills, along with a blog section where I share my insights and experiences. The blog posts are rendered using the react-markdown and react-syntax-highlighter libraries. To provide an interactive view of my contributions to my projects, I have created a visualization of my commits using the GitHub REST API. The blog section is built with Incremental Static Regeneration (ISR) of Next.js for optimal performance and my database is hosted on PlanetScale.`,
     stack: [
       "React",
       "Next.js",
@@ -71,6 +71,7 @@ const projects = [
       "Node.js",
       "Express.js",
       "MySQL",
+      "GitHub API",
       "Figma",
     ],
 
