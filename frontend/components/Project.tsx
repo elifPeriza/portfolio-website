@@ -178,68 +178,78 @@ export default function Project({ githubCommits }: ProjectProps) {
 
   return (
     <>
-      {data.map(({ project, projectCommits, totalDaysWithZeroCommits }) => {
-        return (
-          <div
-            key={project.title}
-            className="flex flex-row justify-between gap-6 pt-5 pb-8  sm:pt-7 sm:pb-14"
-          >
-            <div className="flex flex-col">
-              <h2
-                className="mb-3 font-poppins text-lg
+      {data.map(
+        ({
+          project,
+          projectCommits,
+          totalDays,
+          commitCountTotal,
+          totalDaysWithZeroCommits,
+        }) => {
+          return (
+            <div
+              key={project.title}
+              className="flex flex-row justify-between gap-6 pt-5 pb-8  sm:pt-7 sm:pb-14"
+            >
+              <div className="flex flex-col">
+                <h2
+                  className="mb-3 font-poppins text-lg
      font-bold text-black sm:text-xl "
-              >
-                {project.title}
-              </h2>
-              <p className="mb-4 max-w-[500px]  font-inter text-base text-black ">
-                {project.description}
-              </p>
-              <div className="mb-8 flex max-w-[500px] flex-wrap gap-3">
-                {project.stack.map((item) => (
-                  <Tag key={item}>{item}</Tag>
-                ))}
-              </div>
+                >
+                  {project.title}
+                </h2>
+                <p className="mb-4 max-w-[500px]  font-inter text-base text-black ">
+                  {project.description}
+                </p>
+                <div className="mb-8 flex max-w-[500px] flex-wrap gap-3">
+                  {project.stack.map((item) => (
+                    <Tag key={item}>{item}</Tag>
+                  ))}
+                </div>
 
-              <div className="flex flex-row gap-6">
-                {project.urlWebsite && (
-                  <Button
-                    href={project.urlWebsite}
-                    target="_blank"
-                    variant="primary"
-                  >
-                    Go to Website
-                  </Button>
-                )}
-                {project.urlGithub && (
-                  <Button
-                    href={project.urlGithub}
-                    target="_blank"
-                    variant="primary"
-                  >
-                    Github Repo
-                  </Button>
+                <div className="flex flex-row gap-6">
+                  {project.urlWebsite && (
+                    <Button
+                      href={project.urlWebsite}
+                      target="_blank"
+                      variant="primary"
+                    >
+                      Go to Website
+                    </Button>
+                  )}
+                  {project.urlGithub && (
+                    <Button
+                      href={project.urlGithub}
+                      target="_blank"
+                      variant="primary"
+                    >
+                      Github Repo
+                    </Button>
+                  )}
+                </div>
+
+                {projectCommits && (
+                  <CommitGraph
+                    projectCommits={projectCommits}
+                    gapDays={totalDaysWithZeroCommits}
+                    totalDays={totalDays}
+                    commitCountTotal={commitCountTotal}
+                  />
                 )}
               </div>
-
-              {projectCommits && (
-                <CommitGraph
-                  projectCommits={projectCommits}
-                  gapDays={totalDaysWithZeroCommits}
-                />
-              )}
+              <div className="hidden sm:block">
+                <Image
+                  alt={project.imageAlt}
+                  src={project.image}
+                  width={450}
+                  height={300}
+                  unoptimized={true}
+                ></Image>
+              </div>
             </div>
-            <div className="hidden sm:block">
-              <Image
-                alt={project.imageAlt}
-                src={project.image}
-                width={450}
-                height={300}
-                unoptimized={true}
-              ></Image>
-            </div>
-          </div>
-        );
-      })}
+          );
+        }
+      )}
     </>
   );
 }
