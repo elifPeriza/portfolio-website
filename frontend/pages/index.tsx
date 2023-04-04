@@ -7,11 +7,17 @@ import Project from "@/components/Project";
 import { apiURL } from "@/config/urls";
 import { ArticlePreview } from "@/types/Articles";
 
-type HomepageProps = {
-  articles: ArticlePreview[];
+type ProjectCommits = {
+  repo: string;
+  commits: string[];
 };
 
-export default function Home({ articles }: HomepageProps) {
+type HomepageProps = {
+  articles: ArticlePreview[];
+  githubCommits: ProjectCommits[];
+};
+
+export default function Home({ articles, githubCommits }: HomepageProps) {
   return (
     <>
       <div className="bg-violet-bg">
@@ -24,13 +30,16 @@ export default function Home({ articles }: HomepageProps) {
             <h2 className=" font-poppins  text-xl font-bold text-black  underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl ">
               Work
             </h2>
-            <Project />
-            <h2 className="mb-3 max-w-3xl pt-8 font-poppins text-2xl font-bold text-black sm:text-3xl blogIntroBreakpoint:max-w-[301.5px] ">
+            <div className=" pb-6">
+              <Project githubCommits={githubCommits} />
+            </div>
+
+            <h2 className=" max-w-3xl  font-poppins text-2xl font-bold text-black sm:text-3xl blogIntroBreakpoint:max-w-[301.5px] ">
               I love to share my learnings through writing, check out my latest
               posts
               <Dot variant="violet" />
             </h2>
-            <h3 className=" pt-4  font-poppins text-xl font-bold  text-black underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-7 sm:text-2xl ">
+            <h3 className=" pt-5  font-poppins text-xl font-bold  text-black underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl ">
               Writing
             </h3>
 
@@ -58,12 +67,61 @@ export default function Home({ articles }: HomepageProps) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(`${apiURL}/api/articles`);
-  const data = await response.json();
+  // fetch article data
+  const articlesResponse = await fetch(`${apiURL}/api/articles`);
+  const articles = await articlesResponse.json();
+
+  // fetch Github data
+  const token = process.env.GITHUB_TOKEN;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github.v3+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+
+  // portfolio
+  const portfolioUrl =
+    "https://api.github.com/repos/elifPeriza/portfolio-website/commits?author=elifPeriza&per_page=100";
+  const portfolioResponse = await fetch(portfolioUrl, { headers });
+  const portfolioData = await portfolioResponse.json();
+
+  // skyhub
+  const skyhubUlr =
+    "https://api.github.com/repos/Skyhub-aero/skyhub.aero/commits?sha=cbee2d5e34604479e578a19c08113495895cb2ee&per_page=100&author=elifPeriza";
+  const skyhubResponse = await fetch(skyhubUlr, { headers });
+  const skyhubData = await skyhubResponse.json();
+
+  // musiQue
+  const musiqueUrl =
+    "https://api.github.com/repos/elifPeriza/MusiQue/commits?sha=b6f1382882961006dc7544c178833871a030e74f&author=elifPeriza&per_page=100";
+  const musiqueResponse = await fetch(musiqueUrl, { headers });
+  const musiqueData = await musiqueResponse.json();
+
+  // function transforming response data into needed data
+  function createProjectCommits(fetchedData: any) {
+    const commitsArray = fetchedData.map((commit: any) => {
+      const { date } = commit.commit.author;
+      return date;
+    });
+    // extracting project name from commit url
+    const { url } = fetchedData[0].commit;
+    const repo = url.split("/")[5];
+    // constructing needed data
+    const projectCommits = { repo: repo, commits: commitsArray };
+    return projectCommits;
+  }
+
+  const portfolioCommits = createProjectCommits(portfolioData);
+  const skyhubCommits = createProjectCommits(skyhubData);
+  const musiqueCommits = createProjectCommits(musiqueData);
+
+  const githubCommits = [portfolioCommits, skyhubCommits, musiqueCommits];
+
   return {
     props: {
-      articles: data,
+      articles,
+      githubCommits,
     },
-    revalidate: 60 * 60,
+    revalidate: 1,
   };
 }
