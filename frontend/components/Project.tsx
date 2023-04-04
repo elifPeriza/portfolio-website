@@ -190,7 +190,7 @@ export default function Project({ githubCommits }: ProjectProps) {
           return (
             <div
               key={project.title}
-              className=" flex flex-row justify-between gap-6  pt-5 pb-5  sm:pb-10"
+              className=" flex flex-row justify-between gap-6  pt-5 pb-5  sm:pb-10 md:pb-20"
             >
               <div className="flex flex-col">
                 <h2
@@ -226,7 +226,7 @@ export default function Project({ githubCommits }: ProjectProps) {
                     />
                   </div>
                 )}
-                <div className=" flex flex-row gap-6 sm:mt-5">
+                <div className=" flex flex-row gap-6 sm:mt-3">
                   {project.urlWebsite && (
                     <Button
                       href={project.urlWebsite}
@@ -259,7 +259,7 @@ export default function Project({ githubCommits }: ProjectProps) {
                   ></Image>
                 </div>
                 {projectCommits && (
-                  <div className=" hidden pt-6 sm:block sm:self-end">
+                  <div className=" hidden sm:block sm:self-end">
                     <CommitGraph
                       projectCommits={projectCommits}
                       gapDays={totalDaysWithZeroCommits}
