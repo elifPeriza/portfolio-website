@@ -19,7 +19,9 @@ type ProjectProps = {
 type CommitItem = {
   date: string;
   commitCount: number;
+  daysBeforeWithZeroCommits: number;
 };
+
 const projects = [
   {
     title: "musiQue",
@@ -78,65 +80,97 @@ const projects = [
     repoName: "portfolio-website",
   },
 ];
-const generateCommitGroups = (commits: string[]) => {
-  const groupedCommits = commits
-    .reduce((acc, curr) => {
-      const formattedDate = curr.split("T")[0];
-      const existingDate = acc.findIndex((el) => el.date === formattedDate);
-      if (existingDate !== -1) {
-        acc[existingDate].commitCount += 1;
-      } else {
-        acc.push({ date: formattedDate, commitCount: 1 });
-      }
-      return acc;
-    }, [] as { date: string; commitCount: number }[])
-    .reverse();
-  return groupedCommits;
+
+// Function to generate commit data for each project
+const generateCommitsWithGapInfo = (githubCommits: ProjectCommits) => {
+  const commitCountTotal = githubCommits.commits.length;
+
+  const lastCommit = githubCommits.commits[0];
+  const firstCommit = githubCommits.commits[commitCountTotal - 1];
+  const totalDays =
+    getDifferenceInDays(new Date(firstCommit), new Date(lastCommit)) + 2;
+
+  // Initializing array to store commit data with gap information
+  let commitsNew: CommitItem[] = [];
+  let totalDaysWithZeroCommits = 0;
+
+  // Looping through each commit in reverse order
+
+  githubCommits.commits.reverse().forEach((commit: string, i: number) => {
+    const date = commit.split("T")[0];
+
+    // If first commit, initialize commit data with one commit and zero days before with zero commits
+    if (i === 0) {
+      commitsNew = [{ date, commitCount: 1, daysBeforeWithZeroCommits: 0 }];
+      return;
+    }
+    //  Checking if commit already exists for a given date
+    let existingCommit = commitsNew.find((item) => item.date === date);
+
+    if (existingCommit) {
+      // If commit already exists, increment only the commit count
+      existingCommit.commitCount += 1;
+    } else {
+      // If commit does not exist, calculate daysBeforeWithZeroCommits and add new commit data to new commit array
+      const daysBeforeWithZeroCommits = Math.min(
+        7,
+        getDifferenceInDays(
+          new Date(date),
+          new Date(commitsNew.slice(-1)[0].date)
+        ) - 1
+      );
+      totalDaysWithZeroCommits += daysBeforeWithZeroCommits;
+
+      commitsNew.push({
+        date,
+        commitCount: 1,
+        daysBeforeWithZeroCommits,
+      });
+    }
+  });
+  // Return object with commit data and gap information for a given repository
+  return {
+    [githubCommits.repo]: {
+      commitCountTotal,
+      totalDays,
+      totalDaysWithZeroCommits,
+      commitsNew,
+    },
+  };
 };
 
-const generateCommitsWithGaps = (commits: CommitItem[]) => {
-  let totalDaysWithZeroCommits = 0;
-  const commitDataWithGaps = commits.reduce((acc, curr, i) => {
-    if (i === 0) return [curr];
-    const daysBeforeWithZeroCommits = Math.min(
-      7,
-      getDifferenceInDays(new Date(curr.date), new Date(acc[i - 1].date)) - 1
-    );
-    totalDaysWithZeroCommits += daysBeforeWithZeroCommits;
-    return [...acc, { ...curr, daysBeforeWithZeroCommits }];
-  }, [] as { date: string; commitCount: number; daysBeforeWithZeroCommits?: number }[]);
-  return { totalDaysWithZeroCommits, commitDataWithGaps };
+type ProjectsCommitData = ReturnType<typeof generateCommitsWithGapInfo>;
+
+const generateProjectsCommitData = (githubCommits: ProjectCommits[]) => {
+  // Create an empty object to store project commit data
+  let projectsCommitData: ProjectsCommitData = {};
+
+  githubCommits.forEach((item) => {
+    // Generate new commit data for the current project
+    const commitData = generateCommitsWithGapInfo(item);
+    // create a key with repo name in projectsCommitData and assign it the value of the new commitData;
+    projectsCommitData[item.repo] = commitData[item.repo];
+    // projectsCommitData = {...projectsCommitData, ...commitData};
+  });
+  return projectsCommitData;
 };
 
 export default function Project({ githubCommits }: ProjectProps) {
-  const formattedGithubCommits = githubCommits.reduce((acc, repo) => {
-    const commitCountTotal = repo.commits.length;
-    const groupedCommits = generateCommitGroups(repo.commits);
-    const { totalDaysWithZeroCommits, commitDataWithGaps } =
-      generateCommitsWithGaps(groupedCommits);
-    return {
-      ...acc,
-      [repo.repo]: {
-        commits: commitDataWithGaps,
-        commitCountTotal,
-        totalDaysWithZeroCommits,
-      },
-    };
-  }, {} as { [key: string]: { commits: CommitItem[]; commitCountTotal: number; totalDaysWithZeroCommits?: number } });
-
-  console.log(formattedGithubCommits);
-
+  const projectsCommitData = generateProjectsCommitData(githubCommits);
   const data = projects.map((project) => {
     const {
-      commits: projectCommits,
+      commitsNew: projectCommits,
       commitCountTotal,
+      totalDays,
       totalDaysWithZeroCommits,
-    } = formattedGithubCommits[project.repoName as string];
+    } = projectsCommitData[project.repoName as string];
 
     if (!projectCommits) return { project, totalDaysWithZeroCommits: 0 };
 
     return {
       project,
+      commitCountTotal,
+      totalDays,
       projectCommits,
       totalDaysWithZeroCommits,
     };
@@ -189,7 +223,7 @@ export default function Project({ githubCommits }: ProjectProps) {
 
               {projectCommits && (
                 <CommitGraph
-                  commitCountPerDate={projectCommits}
+                  projectCommits={projectCommits}
                   gapDays={totalDaysWithZeroCommits}
                 />
               )}
