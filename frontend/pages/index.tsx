@@ -30,13 +30,16 @@ export default function Home({ articles, githubCommits }: HomepageProps) {
             <h2 className=" font-poppins  text-xl font-bold text-black  underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl ">
               Work
             </h2>
-            <Project githubCommits={githubCommits} />
-            <h2 className="mb-3 max-w-3xl pt-8 font-poppins text-2xl font-bold text-black sm:text-3xl blogIntroBreakpoint:max-w-[301.5px] ">
+            <div className="md:pb-24">
+              <Project githubCommits={githubCommits} />
+            </div>
+
+            <h2 className=" max-w-3xl pt-8 font-poppins text-2xl font-bold text-black sm:text-3xl blogIntroBreakpoint:max-w-[301.5px] ">
               I love to share my learnings through writing, check out my latest
               posts
               <Dot variant="violet" />
             </h2>
-            <h3 className=" pt-4  font-poppins text-xl font-bold  text-black underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-7 sm:text-2xl ">
+            <h3 className=" pt-5  font-poppins text-xl font-bold  text-black underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl ">
               Writing
             </h3>
 

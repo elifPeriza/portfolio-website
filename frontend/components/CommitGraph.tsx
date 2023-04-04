@@ -20,16 +20,16 @@ export default function CommitGraph({
   return (
     <div className="flex flex-col">
       <h2 className="font-inter">
-        <span className=" pr-2 font-poppins text-4xl font-bold ">
+        <span className=" pr-2 font-poppins text-xl font-bold sm:text-2xl  ">
           {commitCountTotal}
         </span>
         commits in
-        <span className="p-3 font-poppins text-4xl font-bold ">
+        <span className="p-3 font-poppins text-xl font-bold sm:text-2xl ">
           {totalDays}
         </span>
         days
       </h2>
-      <div className="flex h-14 w-[250px] flex-row self-start bg-[#EFF7D4]">
+      <div className="flex h-14 w-[250px] flex-row self-start bg-[#EFF7D4] ">
         {projectCommits?.map((commit) => {
           let hue = 76;
           let saturation;
