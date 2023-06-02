@@ -1,7 +1,7 @@
 import Image from "next/image";
-import ProfilePic from "../public/elif2.webp";
 import LinkedInLogo from "../public/linkedin-icon.png";
 import GithubLogo from "../public/github-mark.svg";
+import TwitterLogo from "../public/twitter-icon.png";
 import Dot from "./Dot";
 
 export default function Header() {
@@ -43,7 +43,15 @@ export default function Header() {
               rel="noreferrer"
               className="h-7 w-7"
             >
-              <Image src={GithubLogo} alt="Go to my LinkedIn" />
+              <Image src={GithubLogo} alt="Go to my Github" />
+            </a>
+            <a
+              href="https://twitter.com/elifscode"
+              target="_blank"
+              rel="noreferrer"
+              className="h-7 w-7"
+            >
+              <Image src={TwitterLogo} alt="Go to my Twitter" />
             </a>
           </div>
         </div>
