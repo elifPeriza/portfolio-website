@@ -1,4 +1,5 @@
 export type ArticlePreview = {
+  key: string; 
   id: number;
   title: string;
   teaser: string;
