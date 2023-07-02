@@ -21,12 +21,12 @@ export default function Home({ articles, githubCommits }: HomepageProps) {
   return (
     <>
       <div className="bg-violet-bg">
-        <div className=" mx-auto max-w-[1200px] px-[5%]">
+        <div className=" mx-auto max-w-[1400px] px-[5%]">
           <Navbar />
           <Header />
         </div>
         <div className=" mt-4 w-full md:mt-14">
-          <div className="mx-auto max-w-[1200px] px-[5%]">
+          <div className="mx-auto max-w-[1400px] px-[5%]">
             <h2 className=" font-poppins  text-xl font-bold text-black  underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl ">
               Work
             </h2>
