@@ -79,6 +79,18 @@ export async function getStaticProps() {
     "X-GitHub-Api-Version": "2022-11-28",
   };
 
+  // makermatic
+  const makermaticUrl =
+    "https://api.github.com/repos/elifPeriza/makermatic/commits?author=elifPeriza&per_page=100";
+  const makermaticResponse = await fetch(makermaticUrl, { headers });
+  const makermaticData = await makermaticResponse.json();
+
+  // moment
+
+  const momentUrl =
+    "https://api.github.com/repos/elifPeriza/gallery-website/commits?author=elifPeriza&per_page=100";
+  const momentResponse = await fetch(momentUrl, { headers });
+  const momentData = await momentResponse.json();
   // portfolio
   const portfolioUrl =
     "https://api.github.com/repos/elifPeriza/portfolio-website/commits?author=elifPeriza&per_page=100";
@@ -111,11 +123,19 @@ export async function getStaticProps() {
     return projectCommits;
   }
 
+  const makermaticCommits = createProjectCommits(makermaticData);
+  const momentCommits = createProjectCommits(momentData);
   const portfolioCommits = createProjectCommits(portfolioData);
   const skyhubCommits = createProjectCommits(skyhubData);
   const musiqueCommits = createProjectCommits(musiqueData);
 
-  const githubCommits = [portfolioCommits, skyhubCommits, musiqueCommits];
+  const githubCommits = [
+    makermaticCommits,
+    momentCommits,
+    portfolioCommits,
+    skyhubCommits,
+    musiqueCommits,
+  ];
 
   return {
     props: {

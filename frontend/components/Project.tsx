@@ -1,9 +1,11 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Button from "./Button";
 import Tag from "./Tag";
 import MusiQue from "../public/musiQue-new.webp";
 import Skyhub from "../public/skyhub-new.webp";
 import Portfolio from "../public/portfolio.webp";
+import Makermatic from "../public/makermatic.webp";
+import Moment from "../public/moment.webp";
 import CommitGraph from "./CommitGraph";
 import { getDifferenceInDays } from "@/utils/dates";
 
@@ -22,23 +24,88 @@ type CommitItem = {
   daysBeforeWithZeroCommits: number;
 };
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  isWorkInProgress?: boolean;
+  stack: string[];
+  urlWebsite?: string;
+  urlGithub?: string;
+  image: StaticImageData;
+  imageAlt: string;
+  repoName: string;
+};
+
+const projects: Project[] = [
   {
-    title: "musiQue",
-    description: `musiQue offers music lovers a chance to discover new music through the
-            Spotify API. Using React and API implementation, the
-            website displays the most popular songs and trending artists for
-            selected genres, with new updates every week. Users can preview songs,
-            shuffle playlists, and listen to top tracks from specific countries.
-            The recommended section highlights standout tracks that catch our
-            team's attention. A group project with Isamu Schlothauer, João Mota,
-            Diogo Augustinho and Iryna Kukuruza.`,
-    stack: ["React", "Spotify API", "CSS", "Figma"],
-    urlWebsite: "https://musique.wcs-student-projects.d-a-pfeiffer.info/",
-    urlGithub: "https://github.com/elifPeriza/MusiQue",
-    image: MusiQue,
-    imageAlt: "screenshots of the website Musique",
-    repoName: "MusiQue",
+    title: "makermatic",
+    description: ` 
+    I'm currently working on a web app that combines AI, gamification and positive reinforcement 
+    to motivate users to complete their DIY projects. It uses AI to track the user's 
+    progress and suggest daily tasks, while also providing a visual representation of their 
+    progress. I am using the GPT API and working with the new React Server components
+    and app directory of Next.js. For database management, 
+    I am exploring the new Drizzle ORM with SQLite.`,
+    isWorkInProgress: true,
+    stack: [
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "Typescript",
+      "DrizzleORM",
+      "SQLite",
+      "GPT API",
+      "Figma",
+      "Node.js",
+    ],
+    urlGithub: "https://github.com/elifPeriza/makermatic",
+    repoName: "makermatic",
+    image: Makermatic,
+    imageAlt: "screenshot of my current project makermatic",
+  },
+  {
+    title: "moment",
+    description: ` 
+    As part of an application process, I developed a website that allows users to share images and tag them with relevant keywords. 
+    I took the opportunity to learn and use cutting-edge technologies, such as the UploadThing library for image uploads and 
+    Playwright for E2E testing. I also used the intercepting routes of Next.js to enhance the user experience as well as 
+    React Server Components for server-side data fetching and faster performance. To ensure accessibility, 
+    I used the HeadlessUI library for the image modal.`,
+    stack: [
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "Typescript",
+      "E2E-Testing (Playwright)",
+      "DrizzleORM",
+      "SQLite",
+      "Figma",
+      "Node.js",
+    ],
+    urlGithub: "https://github.com/elifPeriza/gallery-website",
+    repoName: "gallery-website",
+    image: Moment,
+    imageAlt: "screenshot of my project 'moment'",
+  },
+  {
+    title: "Portfolio",
+    description: `My portfolio showcases my web development projects and skills, along with a blog section where I share my insights and experiences. The blog posts are rendered using the react-markdown and react-syntax-highlighter libraries. To provide an interactive view of my contributions to my projects, I have created a visualization of my commits using the GitHub REST API. The blog section is built with Incremental Static Regeneration (ISR) of Next.js for optimal performance and my database is hosted on PlanetScale.`,
+    stack: [
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "Typescript",
+      "Node.js",
+      "Express.js",
+      "MySQL",
+      "GitHub API",
+      "Figma",
+    ],
+
+    urlGithub: "https://github.com/elifPeriza/portfolio-website",
+    image: Portfolio,
+    imageAlt: "screenshots of my portfolio website",
+    repoName: "portfolio-website",
   },
   {
     title: "Skyhub (Rework)",
@@ -59,26 +126,22 @@ const projects = [
     urlWebsite: "https://skyhubaero-staging-web.up.railway.app/",
     repoName: "skyhub.aero",
   },
-
   {
-    title: "Portfolio",
-    description: `My portfolio showcases my web development projects and skills, along with a blog section where I share my insights and experiences. The blog posts are rendered using the react-markdown and react-syntax-highlighter libraries. To provide an interactive view of my contributions to my projects, I have created a visualization of my commits using the GitHub REST API. The blog section is built with Incremental Static Regeneration (ISR) of Next.js for optimal performance and my database is hosted on PlanetScale.`,
-    stack: [
-      "React",
-      "Next.js",
-      "TailwindCSS",
-      "Typescript",
-      "Node.js",
-      "Express.js",
-      "MySQL",
-      "GitHub API",
-      "Figma",
-    ],
-
-    urlGithub: "https://github.com/elifPeriza/portfolio-website",
-    image: Portfolio,
-    imageAlt: "screenshots of my portfolio website",
-    repoName: "portfolio-website",
+    title: "musiQue",
+    description: `musiQue offers music lovers a chance to discover new music through the
+            Spotify API. Using React and API implementation, the
+            website displays the most popular songs and trending artists for
+            selected genres, with new updates every week. Users can preview songs,
+            shuffle playlists, and listen to top tracks from specific countries.
+            The recommended section highlights standout tracks that catch our
+            team's attention. A group project with Isamu Schlothauer, João Mota,
+            Diogo Augustinho and Iryna Kukuruza.`,
+    stack: ["React", "Spotify API", "CSS", "Figma"],
+    urlWebsite: "https://musique.wcs-student-projects.d-a-pfeiffer.info/",
+    urlGithub: "https://github.com/elifPeriza/MusiQue",
+    image: MusiQue,
+    imageAlt: "screenshots of the website Musique",
+    repoName: "MusiQue",
   },
 ];
 
@@ -158,6 +221,7 @@ const generateProjectsCommitData = (githubCommits: ProjectCommits[]) => {
 
 export default function Project({ githubCommits }: ProjectProps) {
   const projectsCommitData = generateProjectsCommitData(githubCommits);
+
   const data = projects.map((project) => {
     const {
       commitsNew: projectCommits,
@@ -190,15 +254,23 @@ export default function Project({ githubCommits }: ProjectProps) {
           return (
             <div
               key={project.title}
-              className=" flex flex-row justify-between gap-6  pt-5 pb-5  sm:pb-10 md:pb-20"
+              id={project.title.replace(/\s+/g, "-").toLowerCase()}
+              className=" flex flex-row justify-between gap-6  pb-5 pt-5  sm:pb-10 md:pb-20"
             >
               <div className="flex flex-col">
                 <h2
-                  className="mb-3 font-poppins text-lg
+                  className=" font-poppins text-lg
      font-bold text-black sm:text-xl "
                 >
                   {project.title}
                 </h2>
+                {project.isWorkInProgress && (
+                  <div>
+                    <p className="mb-3 font-ibm text-sm text-violet-secondary ">
+                      #wip
+                    </p>
+                  </div>
+                )}
                 <div className="mb-4 block sm:hidden">
                   <Image
                     alt={project.imageAlt}
@@ -208,9 +280,10 @@ export default function Project({ githubCommits }: ProjectProps) {
                     unoptimized={true}
                   ></Image>
                 </div>
-                <p className="mb-4 max-w-[500px]  font-inter text-base text-black ">
+                <p className=" mb-4 mt-2 max-w-[500px]  font-inter text-base text-black ">
                   {project.description}
                 </p>
+
                 <div className="mb-5 flex max-w-[500px] flex-wrap gap-3">
                   {project.stack.map((item) => (
                     <Tag key={item}>{item}</Tag>
