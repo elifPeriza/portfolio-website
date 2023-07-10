@@ -31,13 +31,6 @@ export default function Header() {
           </p>
           <div className="flex flex-row gap-3">
             <a
-              href="https://www.linkedin.com/in/elifgoemleksiz/"
-              rel="noreferrer"
-              className="h-7 w-7"
-            >
-              <Image src={LinkedInLogo} alt="Go to my LinkedIn" />
-            </a>
-            <a
               href="https://github.com/elifPeriza"
               target="_blank"
               rel="noreferrer"
@@ -52,6 +45,13 @@ export default function Header() {
               className="h-7 w-7"
             >
               <Image src={TwitterLogo} alt="Go to my Twitter" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/elifgoemleksiz/"
+              rel="noreferrer"
+              className="h-7 w-7"
+            >
+              <Image src={LinkedInLogo} alt="Go to my LinkedIn" />
             </a>
           </div>
         </div>

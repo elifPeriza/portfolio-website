@@ -70,7 +70,7 @@ export default function HamburgerMenu({ menuItems }: { menuItems: string[] }) {
                   setIsOpen(false);
                 }}
               >
-                <Link href={`/#${item.toLowerCase()}`}>
+                <Link href={`/#${item.toLowerCase().replace(/ /g, "-")}`}>
                   <UnderlinedHeading
                     fontSizeMobile="1rem"
                     fontWeight="font-semibold"
