@@ -21,13 +21,17 @@ export default function Home({ articles, githubCommits }: HomepageProps) {
   return (
     <>
       <div className="bg-violet-bg">
-        <div className=" mx-auto max-w-[1400px] px-[5%]">
-          <Navbar />
+        <div className=" mx-auto max-w-[1400px] px-[5%] ">
+          <div>
+            <Navbar />
+          </div>
+
           <Header />
-        </div>
-        <div className=" mt-4 w-full md:mt-14">
-          <div className="mx-auto max-w-[1400px] px-[5%]">
-            <h2 className=" font-poppins  text-xl font-bold text-black  underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl ">
+          <div className=" mt-4 w-full md:mt-14">
+            <h2
+              id="work"
+              className=" font-poppins  text-xl font-bold text-black  underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl "
+            >
               Work
             </h2>
             <div className=" pb-6">
@@ -39,7 +43,10 @@ export default function Home({ articles, githubCommits }: HomepageProps) {
               posts
               <Dot variant="violet" />
             </h2>
-            <h3 className=" pt-5  font-poppins text-xl font-bold  text-black underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl ">
+            <h3
+              id="writing"
+              className=" pt-5  font-poppins text-xl font-bold  text-black underline decoration-neon-primary decoration-[6px] [text-decoration-skip-ink:none] sm:pt-10 sm:text-2xl "
+            >
               Writing
             </h3>
 
@@ -59,7 +66,6 @@ export default function Home({ articles, githubCommits }: HomepageProps) {
             </div>
           </div>
         </div>
-
         <Footer />
       </div>
     </>
