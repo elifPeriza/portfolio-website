@@ -67,10 +67,10 @@ const projects: Project[] = [
     title: "moment",
     description: ` 
     As part of an application process, I developed a website that allows users to share images and tag them with relevant keywords. 
-    I took the opportunity to learn and use cutting-edge technologies, such as the UploadThing library for image uploads and 
+    I took the opportunity to learn cutting-edge technologies, such as the UploadThing library for image uploads and 
     Playwright for E2E testing. I also used the intercepting routes of Next.js to enhance the user experience as well as 
     React Server Components for server-side data fetching and faster performance. To ensure accessibility, 
-    I used the HeadlessUI library for the image modal.`,
+    I utilized the HeadlessUI library for the image modal.`,
     stack: [
       "React",
       "Next.js",
